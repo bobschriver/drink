@@ -1,4 +1,9 @@
+%This will probably not work yet
+
 -module (app_auth)
+
+-export([get_app_key/1 , auth_app/2]).
+-export([get_user_key/2 , gen_user_key/2 , auth_user/2]).
 
 mysql_init() ->
 	mysql:prepart(get_app_key, <<"SELECT app_key FROM app_keys WHERE app_name = ?">>),
