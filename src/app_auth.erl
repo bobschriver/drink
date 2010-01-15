@@ -30,7 +30,7 @@ get_app_key(AppName) ->
 					{ok, AppKey};
 			end;
 		{data, MySqlRes}
-			{ok, data}
+			{ok, data};
 	end.
 
 get_user_key(AppName, UserName)->
@@ -72,9 +72,9 @@ auth_app(AppName, AppKey) ->
 			mysql_init(),
 			auth_app(AppName , AppKey);
 		{error, _MySqlRes} ->
-			{error, MySqlRes};
+			{error, mysql};
 		{data , MySqlRes} ->
-			{ok};
+			{ok, authed};
 	end.
 
 auth_user(AppName, UserName, UserKey)->
@@ -85,7 +85,7 @@ auth_user(AppName, UserName, UserKey)->
 		{error , _MySqlRes} ->
 			{error , no_user_auth};
 		{data , MySqlRes} ->
-			{ok} ;
+			{ok, authed};
 	end.
 
 
